@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九年级语文阅读与理解训练作业单十二 - 讲评课件</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4A6FA5;
+            --secondary: #6C9BCF;
+            --accent: #FF9F1C;
+            --success: #4CAF50;
+            --danger: #F44336;
+            --light: #F8F9FA;
+            --dark: #343A40;
+            --text: #333333;
+            --highlight: #FFF9C4;
+            --card-bg: #FFFFFF;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --key-point-1: #E53935;
+            --key-point-2: #1E88E5;
+            --key-point-3: #43A047;
+            --key-point-4: #8E24AA;
+            --key-point-5: #FB8C00;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #F0F7FF;
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px var(--shadow);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            border-left: 6px solid var(--accent);
+            padding-left: 15px;
+            margin: 40px 0 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+        }
+        
+        .question-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed #E0E0E0;
+        }
+        
+        .question-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .question-points {
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .question-content {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .question-content small {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .options-container {
+            margin: 20px 0;
+        }
+        
+        .option {
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 2px solid #E0E0E0;
+            background-color: #F9F9F9;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .option:hover {
+            background-color: #F0F0F0;
+        }
+        
+        .option.correct {
+            border-color: var(--success);
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            font-weight: bold;
+        }
+        
+        .option.incorrect {
+            border-color: var(--danger);
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+        
+        .answer-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 10px;
+            margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .answer-btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .answer-btn i {
+            margin-right: 8px;
+        }
+        
+        .answer-container, .analysis-container {
+            display: none;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .answer-container {
+            background-color: #E8F5E9;
+            border-left: 5px solid var(--success);
+        }
+        
+        .analysis-container {
+            background-color: #E3F2FD;
+            border-left: 5px solid var(--secondary);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .answer-title, .analysis-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .answer-title i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .analysis-title i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .answer-content {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #2E7D32;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .answer-key-point-1 {
+            color: var(--key-point-1);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--key-point-1);
+        }
+        
+        .answer-key-point-2 {
+            color: var(--key-point-2);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--key-point-2);
+        }
+        
+        .answer-key-point-3 {
+            color: var(--key-point-3);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--key-point-3);
+        }
+        
+        .answer-key-point-4 {
+            color: var(--key-point-4);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--key-point-4);
+        }
+        
+        .answer-key-point-5 {
+            color: var(--key-point-5);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border-bottom: 2px solid var(--key-point-5);
+        }
+        
+        .analysis-content {
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+        
+        .highlight {
+            background-color: var(--highlight);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .key-point {
+            color: var(--primary);
+            font-weight: bold;
+            border-bottom: 2px dotted var(--accent);
+        }
+        
+        .poem-translation {
+            background-color: #F5F5F5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .translation-row {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed #DDD;
+            padding-bottom: 15px;
+        }
+        
+        .original {
+            width: 45%;
+            padding-right: 20px;
+            font-size: 1.1rem;
+            color: var(--dark);
+            border-right: 1px solid #DDD;
+        }
+        
+        .translation {
+            width: 55%;
+            padding-left: 20px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        
+        th {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #E0E0E0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 1rem;
+            border-top: 1px solid #E0E0E0;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .question-title {
+                font-size: 1.2rem;
+            }
+            
+            .answer-content {
+                font-size: 1.2rem;
+            }
+            
+            .translation-row {
+                flex-direction: column;
+            }
+            
+            .original, .translation {
+                width: 100%;
+                padding: 0;
+                border: none;
+            }
+            
+            .original {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-book-open"></i> 九年级语文阅读与理解训练作业单十二</h1>
+        <p>教师讲评课件 - 班级：__________ 姓名：__________ 学号：__________</p>
+        <p>限时60分钟</p>
+    </div>
+    
+    <div class="section-title">
+        <i class="fas fa-pen-alt"></i> A类：积累和运用（24分）
+    </div>
+    
+    <!-- 第1题 -->
+    <div class="question-card" id="q1">
+        <div class="question-header">
+            <div class="question-title">第1题：根据拼音写汉字</div>
+            <div class="question-points">4分</div>
+        </div>
+        <div class="question-content">
+            <p>根据拼音在田字格内写出相应的汉字。</p>
+            <p>1. 根深dì固 ______</p>
+            <p>2. 心chí神往 ______</p>
+            <p>3. hán养性情 ______</p>
+            <p>4. 陋室míng ______</p>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q1-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q1-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q1-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                1. <span class="answer-key-point-1">蒂</span> 2. <span class="answer-key-point-2">驰</span> 3. <span class="answer-key-point-3">涵</span> 4. <span class="answer-key-point-4">铭</span>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q1-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 解题思路
+            </div>
+            <div class="analysis-content">
+                <p>这道题考查根据拼音写汉字的能力，需要结合上下文语境来推断正确的汉字。</p>
+                <p><span class="key-point">1. 根深dì固</span>：这是一个成语，意思是基础深厚，不容易动摇，应写作"根深蒂固"。</p>
+                <p><span class="key-point">2. 心chí神往</span>：心神奔向所向往的事物，形容一心向往，应写作"心驰神往"。</p>
+                <p><span class="key-point">3. hán养性情</span>：指滋润养育，使性格、品格得到培养，应写作"涵养性情"。</p>
+                <p><span class="key-point">4. 陋室míng</span>：指刘禹锡的《陋室铭》，应写作"陋室铭"。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第2题 -->
+    <div class="question-card" id="q2">
+        <div class="question-header">
+            <div class="question-title">第2题：词语和标点选择</div>
+            <div class="question-points">3分</div>
+        </div>
+        <div class="question-content">
+            <p>填入【甲】【乙】两处的词语和标点，最恰当的一项是（ ）</p>
+            <div class="options-container">
+                <div class="option incorrect">A．【甲】墨守  【乙】《聊斋》</div>
+                <div class="option correct">B．【甲】恪守  【乙】 "聊斋 "</div>
+                <div class="option incorrect">C．【甲】恪守  【乙】《聊斋》</div>
+                <div class="option incorrect">D．【甲】墨守  【乙】 "聊斋 "</div>
+            </div>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q2-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q2-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q2-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                <span class="answer-key-point-1">B</span>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q2-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 解题思路
+            </div>
+            <div class="analysis-content">
+                <p><span class="highlight">墨守</span>：指固执保守，不思进取。</p>
+                <p><span class="highlight">恪守</span>：指谨慎而恭顺地遵守、严格遵守。</p>
+                <p>结合"【甲】君子之道，于书香浸润中寻得一处精神的世外桃源"可知，甲处所填词语是用于形容严格遵守君子之道，故应选填<span class="key-point">"恪守"</span>。</p>
+                <p>结合"书房可以闹，蒲松龄设一茶棚，人来人往中记录奇闻异事，【乙】之名由此而来"可知，乙处要填的是蒲松龄的书房的名字，故应填<span class="key-point">"聊斋"</span>；"聊斋"是特指蒲松龄的书房，故应给它加上<span class="key-point">双引号</span>。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第3题 -->
+    <div class="question-card" id="q3">
+        <div class="question-header">
+            <div class="question-title">第3题：下列说法不正确的一项</div>
+            <div class="question-points">3分</div>
+        </div>
+        <div class="question-content">
+            <p>下列说法不正确的一项是（ ）</p>
+            <div class="options-container">
+                <div class="option">A．首段的划横线句是复句，两个分句是并列关系，没有主次之分。</div>
+                <div class="option">B．"酝酿了伟大的思潮'风暴 '"这句话运用了比喻的修辞手法。</div>
+                <div class="option">C．末段中划横线句的主干是：书房贮藏记忆与文明、求知与探索。</div>
+                <div class="option incorrect">D．从结构上说，"世外桃源 "是偏正短语，"文化基因 "是主谓短语。</div>
+            </div>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q3-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q3-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q3-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                <span class="answer-key-point-1">D</span>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q3-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 解题思路
+            </div>
+            <div class="analysis-content">
+                <p><span class="key-point">D选项说法不正确</span>。</p>
+                <p>"'文化基因 '是主谓短语"的说法不正确。</p>
+                <p>"文化基因"中"文化"是修饰语，"基因"是中心语，故<span class="highlight">"文化基因"是偏正短语</span>。</p>
+                <p>A、B、C三项的说法都是正确的。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第4题 -->
+    <div class="question-card" id="q4">
+        <div class="question-header">
+            <div class="question-title">第4题：名句默写</div>
+            <div class="question-points">8分</div>
+        </div>
+        <div class="question-content">
+            <p>根据提示补写名句或填写课文原句。</p>
+            <p>（1） ？雪拥蓝关马不前。（韩愈《左迁至蓝关示侄孙湘》）</p>
+            <p>（2）春蚕到死丝方尽， 。（李商隐《无题》）</p>
+            <p>（3） ， ，晦明变化者，山间之朝暮也。（欧阳修《醉翁亭记》）</p>
+            <p>（4）"苏超"比赛失利后，徐州球员们望着绿茵场，满心失落，这种境遇正应了刘禹锡《酬乐天扬州初逢席上见赠》里" ， "的怅惘。面对"苏超"的败绩，球队教练开导球员，挫折是成长的阶梯，要有《岳阳楼记》中" ， "的豁达胸襟。因此，最后虽在"苏超"中折戟，但徐州球员们已立下"明年再战"的誓言，这份乐观与坚韧，正是《行路难》中" ， "的最好诠释。</p>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q4-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q4-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q4-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                （1）<span class="answer-key-point-1">云横秦岭家何在</span><br>
+                （2）<span class="answer-key-point-2">蜡炬成灰泪始干</span><br>
+                （3）<span class="answer-key-point-3">日出而林霏开，云归而岩穴暝</span><br>
+                （4）<span class="answer-key-point-4">怀旧空吟闻笛赋，到乡翻似烂柯人</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="answer-key-point-5">不以物喜，不以己悲</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="answer-key-point-1">长风破浪会有时，直挂云帆济沧海</span>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q4-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 解题思路
+            </div>
+            <div class="analysis-content">
+                <p>这道题考查古诗文名句的默写，需要注意：</p>
+                <p>1. 准确记忆原文，不添字、不漏字、不错字</p>
+                <p>2. 注意易错字：</p>
+                <ul>
+                    <li>"蜡炬"不要写成"蜡烛"</li>
+                    <li>"林霏"不要写成"林菲"</li>
+                    <li>"岩穴暝"的"暝"是日字旁</li>
+                    <li>"烂柯人"的"柯"是木字旁</li>
+                </ul>
+                <p>3. 理解性默写要结合语境分析：</p>
+                <ul>
+                    <li>第（4）题第一空：表达怅惘之情，应选"怀旧空吟闻笛赋，到乡翻似烂柯人"</li>
+                    <li>第（4）题第二空：表达豁达胸襟，应选"不以物喜，不以己悲"</li>
+                    <li>第（4）题第三空：表达乐观与坚韧，应选"长风破浪会有时，直挂云帆济沧海"</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-title">
+        <i class="fas fa-book-reader"></i> B类：阅读理解（62分）
+    </div>
+    
+    <!-- 第5-6题 -->
+    <div class="question-card" id="q5-6">
+        <div class="question-header">
+            <div class="question-title">第5-6题：古诗阅读《谷口书斋寄杨补阙》</div>
+            <div class="question-points">6分</div>
+        </div>
+        <div class="question-content">
+            <p><strong>谷口书斋寄杨补阙</strong>（唐）钱起</p>
+            <p>泉壑带茅茨，云霞生薜帷。竹怜新雨后，山爱夕阳时。</p>
+            <p>闲鹭栖常早，秋花落更迟。家僮扫萝径，昨与故人期。</p>
+            
+            <p>5．下列对这首诗的理解和赏析，不正确的一项是（ ）</p>
+            <div class="options-container">
+                <div class="option">A．诗人的书斋，是一茅屋，有山泉沟壑环绕左右，既简朴又幽美清静。</div>
+                <div class="option">B．书斋的院墙上长满了薜荔，云霞似从中升起，环境天然，宛如仙境。</div>
+                <div class="option incorrect">C．颈联借"闲鹭"早休息，"秋花 "迟凋落，显现出山里生活的无聊。</div>
+                <div class="option">D．颔联中"竹""夕阳"具有极强的色彩感，突出竹林山色让人怜爱。</div>
+            </div>
+            
+            <p>6．结合诗句内容，说说全诗表达了诗人哪些思想感情。</p>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q5-6-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q5-6-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q5-6-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                <p>5．<span class="answer-key-point-1">C</span></p>
+                <p>6．<span class="answer-key-point-1">前三联写了书斋附近幽静清新的美景，突出诗人欣喜愉悦的心情。</span> <span class="answer-key-point-2">尾联写家童打扫满是松萝的小径，突出表现诗人对友人来访的期盼（或邀约的诚意盛情）。</span></p>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q5-6-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 古诗赏析与解题思路
+            </div>
+            <div class="analysis-content">
+                <div class="poem-translation">
+                    <h3>《谷口书斋寄杨补阙》逐句赏析</h3>
+                    <div class="translation-row">
+                        <div class="original">泉壑带茅茨，云霞生薜帷。</div>
+                        <div class="translation">山泉沟壑环绕着我的茅屋书斋，云霞从爬满薜荔的墙帷升起。</div>
+                    </div>
+                    <div class="translation-row">
+                        <div class="original">竹怜新雨后，山爱夕阳时。</div>
+                        <div class="translation">新雨过后的翠竹分外可爱，夕阳映照下的山色更显迷人。</div>
+                    </div>
+                    <div class="translation-row">
+                        <div class="original">闲鹭栖常早，秋花落更迟。</div>
+                        <div class="translation">悠闲的白鹭早早栖息，秋日的花朵迟迟不落。</div>
+                    </div>
+                    <div class="translation-row">
+                        <div class="original">家僮扫萝径，昨与故人期。</div>
+                        <div class="translation">家童清扫着布满松萝的小径，昨天已与老朋友约定好相见。</div>
+                    </div>
+                </div>
+                
+                <p><strong>第5题解析：</strong></p>
+                <p><span class="key-point">C选项错误</span>。颈联"闲鹭栖常早，秋花落更迟"意为：悠闲的白鹭早早就栖息，秋日的花朵迟迟不凋谢。"闲鹭"早早栖息，体现出一种闲适；"秋花"凋落较迟，展现出秋景的美好和生命力。这里是在描绘山谷的宁静祥和、富有生机，而不是山里生活无聊。</p>
+                
+                <p><strong>第6题解析：</strong></p>
+                <p>1. <span class="highlight">前三联写景</span>：通过对书斋周围泉壑、云霞、竹、山、鹭、花等自然景色的描写，展现了幽静清新的美景，字里行间透露出诗人对这一环境的喜爱与陶醉，突出诗人欣喜愉悦的心情。</p>
+                <p>2. <span class="highlight">尾联叙事抒情</span>：诗人特意让家僮打扫布满松萝的小径，点明了昨天已经与友人约定好来访。诗人安排家僮打扫路径，这一行为体现了他对友人到来的重视，通过描述与友人的约定，进一步强化了这种情感。尾联突出表现诗人对友人来访的期盼（或邀约的诚意盛情）。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第7-12题 -->
+    <div class="question-card" id="q7-12">
+        <div class="question-header">
+            <div class="question-title">第7-12题：文言文阅读《醉书斋记》</div>
+            <div class="question-points">18分</div>
+        </div>
+        <div class="question-content">
+            <p><strong>醉书斋记</strong>（明）郑日奎</p>
+            <p>①于堂左洁一室，为书斋，明窗素壁，泊如<sup>①</sup>也。设几二：一陈笔墨，一置香炉茗碗之属。书架书筒各四，古今籍在焉。</p>
+            <p>②甫晨起，即科头<sup>②</sup>，随意抽书一帙，据坐批阅之。顷至会心处，或歌或叹，或笑或泣，或怒骂，或大叫称快，或咄咄诧异，或卧而思，起而狂走。家人瞷<sup>③</sup>见者，悉骇愕，罔测所指。乃窃相议，俟稍定，始散去。</p>
+            <p>③客或访余者，值余方校书，不遽见。客伺久，辄大怒诟，余亦不知也。盖余性既严急，家中人启事不以时，即叱出，而事之急缓不更问，以故仓卒不得白。</p>
+            <p>④他日忽自悔谋立誓戒之。内子笑曰："君无效刘伶断饮法<sup>④</sup>，只赚余酒脯，补五脏劳耶？"余怅然久之，因思余于书，诚不异伶于酒，正恐旋誓且旋畔。乃不复立戒，而采其语意，以名吾斋曰"醉书"。</p>
+            
+            <p>7．解释下列句中加点词的意思。</p>
+            <p>①一陈笔墨 （ ） ②俟稍定，始散去（ ）</p>
+            <p>③正恐旋誓且旋畔（ ） ④以名吾斋 （ ）</p>
+            
+            <p>8．下列句中加点词的意义和用法相同的一项是（ ）</p>
+            <div class="options-container">
+                <div class="option">A．随意抽书一帙 / 上下一白（《湖心亭看雪》）</div>
+                <div class="option">B．或大叫称快 / 或异二者之为 （《岳阳楼记》）</div>
+                <div class="option">C．家中人启事不以时 / 徒以有先生也（《唐雎不辱使命》）</div>
+                <div class="option correct">D．因思余于书 / 余因得遍观群书（《送东阳马生序》）</div>
+            </div>
+            
+            <p>9．用"/ "标出下面句子的两处朗读停顿。</p>
+            <p>他日忽自悔谋立誓戒之</p>
+            
+            <p>10．翻译以下句子。</p>
+            <p>（1）于堂左洁一室，为书斋，明窗素壁。</p>
+            <p>（2）不必若余之手录，假诸人而后见也。</p>
+            
+            <p>11．文中"书痴"的形象令人忍俊不禁，也令人心生敬意。这得益于作者人物刻画手法的灵活多样。请从下面两个角度中任选一个，分析本文人物刻画的妙处。</p>
+            <p>A．漫画式夸张描写 B．侧面烘托</p>
+            
+            <p>12．"人有一癖，方可养深情。"请联系课文《醉翁亭记》《湖心亭看雪》，结合本文内容探究中国古代文人"醉"与"痴"背后的精神追求。</p>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q7-12-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q7-12-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q7-12-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                <p>7．①<span class="answer-key-point-1">陈列，摆开</span> ②<span class="answer-key-point-2">等待</span> ③<span class="answer-key-point-3">"畔"同"叛"，违背</span> ④<span class="answer-key-point-4">命名</span></p>
+                <p>8．<span class="answer-key-point-1">D</span></p>
+                <p>9．<span class="answer-key-point-1">他日/忽自悔/谋立誓戒之</span></p>
+                <p>10．（1）<span class="answer-key-point-1">在堂屋左侧收拾干净一间屋子，作为书斋，明亮的窗户，洁白的墙壁。</span><br>
+                   （2）<span class="answer-key-point-2">不必再像我这样用手抄录，从别人处借来然后才能看到了。</span></p>
+                <p>11．<span class="answer-key-point-1">选A：运用夸张、白描的手法，形象生动地刻画了书斋主人读书时不拘小节、忘乎所以的情态，塑造了一个惟妙惟肖的"书痴"形象，令人忍俊不禁，印象深刻。</span><br>
+                   <span class="answer-key-point-2">选B：文章通过描写仆人见到书斋主人读书时的狂态目瞪口呆、议论纷纷的情形，以及借妻子之口，侧面烘托书斋主人陶醉于书，忘乎所以的情态，丰富人物形象，唤起读者的想象。</span></p>
+                <p>12．<span class="answer-key-point-1">《醉书斋记》中郑日奎辟出一间洁净的书斋，每天沉醉在读书的世界里；</span> <span class="answer-key-point-2">《湖心亭看雪》中张岱冒寒踏雪，寻赏湖心亭雪景；</span> <span class="answer-key-point-3">《醉翁亭记》中欧阳修寄情山水，与民同乐。</span> <span class="answer-key-point-4">"醉"与"痴"的背后，反映这些文人在独特的生活雅趣中陶冶性情，追求精神上的愉悦与满足；</span> <span class="answer-key-point-5">在世俗中保持疏率真性，不随俗流，坚守独立的人格操守。</span></p>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q7-12-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 文言文解读与解题思路
+            </div>
+            <div class="analysis-content">
+                <div class="poem-translation">
+                    <h3>《醉书斋记》逐句翻译</h3>
+                    <div class="translation-row">
+                        <div class="original">于堂左洁一室，为书斋，明窗素壁，泊如也。</div>
+                        <div class="translation">在堂屋左侧收拾干净一间屋子，作为书斋，明亮的窗户，洁白的墙壁，很安静。</div>
+                    </div>
+                    <div class="translation-row">
+                        <div class="original">设几二：一陈笔墨，一置香炉茗碗之属。</div>
+                        <div class="translation">摆放了两个几案，一个放笔墨，一个放置香炉茶碗等。</div>
+                    </div>
+                    <div class="translation-row">
+                        <div class="original">甫晨起，即科头，随意抽书一帙，据坐批阅之。</div>
+                        <div class="translation">早晨刚起床，就不戴帽子，随意抽出一卷书，靠坐在案边读起来。</div>
+                    </div>
+                    <div class="translation-row">
+                        <div class="original">顷至会心处，或歌或叹，或笑或泣，或怒骂，或大叫称快，或咄咄诧异，或卧而思，起而狂走。</div>
+                        <div class="translation">一会儿读到自己有领悟的地方，有时候唱起歌来，有时候发出感叹；有时候大笑，有时候哭泣；有时候生气痛骂，有时候郁闷得要死；有时候大声叫嚷口称痛快，有时候是连连惊叹感到诧异；有时候躺着静静思考，有时候起身一阵乱跑。</div>
+                    </div>
+                </div>
+                
+                <p><strong>第7题解析：</strong></p>
+                <p>本题考查文言实词的理解，需要注意：</p>
+                <ul>
+                    <li>①"陈"是"陈列，摆开"的意思</li>
+                    <li>②"俟"是"等待"的意思</li>
+                    <li>③"畔"是通假字，同"叛"，意为"违背"</li>
+                    <li>④"名"是名词作动词，"命名"的意思</li>
+                </ul>
+                
+                <p><strong>第8题解析：</strong></p>
+                <p>本题考查文言虚词的意义和用法：</p>
+                <ul>
+                    <li>A.数词"一" / 副词"全，都"</li>
+                    <li>B.副词"有时" / 副词"或许"</li>
+                    <li>C.介词"按照" / 连词"因为"</li>
+                    <li>D.两个"因"都是连词"于是"</li>
+                </ul>
+                
+                <p><strong>第9题解析：</strong></p>
+                <p>根据文言文断句的方法，先梳理句子大意，分清层次，然后断句，反复诵读加以验证。主语和谓语之间，谓语和宾语、补语之间一般要作停顿。</p>
+                <p>"他日忽自悔谋立誓戒之"：有一天我忽然自己悔悟了，打算发誓戒掉它。</p>
+                <p>"他日"是时间状语，"忽自悔"是原因，"谋立誓戒之"是举动，故中间分别断开。</p>
+                
+                <p><strong>第10题解析：</strong></p>
+                <p>翻译文言文要注意：</p>
+                <p>1. 逐字对译，注意特殊句式</p>
+                <p>2. 第（2）句出自《送东阳马生序》，注意"手录"译为"用手抄录"，"假诸人"译为"从别人处借来"</p>
+                
+                <p><strong>第11题解析：</strong></p>
+                <p><span class="highlight">选A角度：漫画式夸张描写</span></p>
+                <p>作者运用漫画式夸张描写，将"书痴"醉心读书的形象刻画得入木三分，极具喜剧效果，同时又让人真切感受到他对书的痴迷，心生敬意。如"甫晨起，即科头，随意抽书一帙，据坐批阅之。顷至会心处，或歌或叹，或笑或泣，或怒骂，或大叫称快，或咄咄诧异，或卧而思，起而狂走"，晨起不戴帽子就读书，读到精彩处，情绪全然外放，或歌或泣、或怒或喜，甚至起身狂走，这些夸张的行为动作，生动地展现了主人公沉浸书中世界不能自拔的状态。</p>
+                
+                <p><span class="highlight">选B角度：侧面烘托</span></p>
+                <p>通过侧面烘托的手法，从家人和访客的反应来展现主人公的书痴形象，使人物形象更加丰满真实。家人看到他读书时的种种癫狂举动，"悉骇愕，罔测所指。乃窃相议，俟稍定，始散去"，从家人的惊愕、猜测以及悄悄议论、等待他平静后才敢散去，侧面反映出主人公读书时的忘情投入。</p>
+                
+                <p><strong>第12题解析：</strong></p>
+                <p>本题考查对比阅读和文化探究能力，需要联系三篇课文，分析古代文人"醉"与"痴"背后的精神追求：</p>
+                <ul>
+                    <li><span class="key-point">《醉书斋记》</span>：郑日奎沉醉于读书，在书中寻找精神寄托</li>
+                    <li><span class="key-point">《湖心亭看雪》</span>：张岱痴迷于雪景，追求超凡脱俗的境界</li>
+                    <li><span class="key-point">《醉翁亭记》</span>：欧阳修陶醉于山水，追求与民同乐的境界</li>
+                </ul>
+                <p>共同点：这些文人都在自己的雅趣中陶冶性情，追求精神自由，保持独立人格，不随波逐流。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第13题 -->
+    <div class="question-card" id="q13">
+        <div class="question-header">
+            <div class="question-title">第13题：名著阅读《儒林外史》人名深意</div>
+            <div class="question-points">6分</div>
+        </div>
+        <div class="question-content">
+            <p>文学作品中人物的姓名往往能体现出作者的匠心。姓名或体现了人物性格，或暗示了人物命运，或寄寓了作者态度，或暗示了文章主旨。请参考示例（不要求仿照），说说《儒林外史》中范进的人名有哪些深意。</p>
+            <p><strong>示例：</strong>林冲，冲含有"冲击、冲锋"之意，由于遭到高俅等权贵的陷害，林冲被迫害至家破人亡的境地。先是妻子受辱，接着自己也被刺配沧州，这一系列的打击使得林冲的性格开始发生变化。火烧草料场是重要的转折点，他从原来的逆来顺受、委曲求全转变为在绝境中展现出血性和反抗精神。"冲"字暗示了他直率刚烈的性格以及在遭受一系列冤屈后最终走上反抗道路的命运走向，很好地诠释了他从逆来顺受的八十万禁军教头转变为梁山英雄的过程。</p>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q13-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q13-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q13-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                <p><strong>示例1：</strong><span class="answer-key-point-1">范进，"范"有模范、规范之意，"进"即进取、晋升，</span> <span class="answer-key-point-2">范进对功名利禄有着近乎疯狂的追求，他将自己的人生几乎全部押注在科举考试之上，尽管多年屡试不中，仍矢志不渝，即便生活陷入极度贫困，甚至不惜让家人忍饥挨饿，也要继续参加科举考试。</span> <span class="answer-key-point-3">他性格软弱且自卑，在未中举之前备受邻里嘲笑和岳父胡屠户的羞辱，但始终坚守自己的科举之路，直到晚年终于中举，却又因过于激动而发疯，尽显丑态。</span> <span class="answer-key-point-4">"范""进"二字尖锐地讽刺了他对功名之追求的病态执着，批判了封建科举制度对士人精神世界的扭曲和戕害。</span></p>
+                <p><strong>示例2：</strong><span class="answer-key-point-5">范进，"范"含"范式、范例"之意，"进"指科举进阶、功名递进。</span> <span class="answer-key-point-1">他是封建科举制度下无数士人的缩影，将科举视为人生唯一正途，从青年到暮年，数十年如一日沉溺考场，即便穷困潦倒、遭人唾弃也不愿回头。</span> <span class="answer-key-point-2">中举前他唯唯诺诺、忍辱负重，中举后却狂喜失态、疯癫发狂，前后判若两人。</span> <span class="answer-key-point-3">"范进"二字既点出他是科举制度塑造的"标准范本"，又暗讽这种"进阶"之路对人性的异化，深刻揭露了封建科举对士人灵魂的腐蚀与摧残。</span></p>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q13-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 解题思路
+            </div>
+            <div class="analysis-content">
+                <p>题干要求结合《儒林外史》中范进的人名，探究其背后的深意，需从"体现人物性格""暗示人物命运""寄寓作者态度""暗示文章主旨"这四个核心方向中选取相关角度展开分析，需联系范进的具体情节（如中举前后的经历、性格变化等）。</p>
+                
+                <p><span class="key-point">解题步骤：</span></p>
+                <ol>
+                    <li><strong>分析名字字义</strong>："范"有模范、规范之意；"进"有进取、晋升、进阶之意</li>
+                    <li><strong>联系人物经历</strong>：
+                        <ul>
+                            <li>范进多年参加科举考试，屡试不中</li>
+                            <li>生活贫困，备受歧视和嘲笑</li>
+                            <li>54岁终于中举，喜极而疯</li>
+                            <li>中举后众人态度骤变，趋炎附势</li>
+                        </ul>
+                    </li>
+                    <li><strong>挖掘深层含义</strong>：
+                        <ul>
+                            <li>"范"字讽刺他是科举制度下的"典范"</li>
+                            <li>"进"字讽刺他对功名的疯狂追求</li>
+                            <li>名字整体揭露科举制度对人性的扭曲</li>
+                        </ul>
+                    </li>
+                    <li><strong>联系作者态度</strong>：吴敬梓通过这个名字表达对科举制度的批判</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第14题 -->
+    <div class="question-card" id="q14">
+        <div class="question-header">
+            <div class="question-title">第14题：名著语段阅读</div>
+            <div class="question-points">12分</div>
+        </div>
+        <div class="question-content">
+            <p>（1）下列对【语段一】的理解和分析，不正确的一项是（ ）</p>
+            <div class="options-container">
+                <div class="option">A．文段节选自艾青的成名作《大堰河------我的保姆》，这是一首带有自传性质的抒情诗。</div>
+                <div class="option">B．"我"被领回家后，大堰河哭了，是对乳儿离开的悲伤，更是对乳儿未来命运的担忧。</div>
+                <div class="option incorrect">C．文段写出了"我"回到自己家里的温暖和幸福，反衬出在大堰河家的陌生感和拘束感。</div>
+                <div class="option">D．诗中采用反复、排比、对比的修辞手法，加强了音节旋律，显示出诗人的亲疏和爱憎。</div>
+            </div>
+            
+            <p>（2）【语段二】节选自《水浒传》，选文中的"那人"正是卢俊义的心腹家仆、绰号"浪子"的__________（人名）；董超、薛霸二人见利忘义，罔顾法度，不但押解过卢俊义，还曾经押解过__________（人名），两次用的都是一样的害人套路。</p>
+            
+            <p>（3）请从人物描写的角度赏析【语段二】的划线句。</p>
+            <p><small>划线句：那人托地从树上跳将下来，拔出解腕尖刀，割断绳索，劈碎盘头枷，就树边抱住卢员外放声大哭</small></p>
+            
+            <p>（4）【语段三】节选自清代小说家吴敬梓的长篇讽刺小说《__________》，周进痛哭不止的原因是__________。</p>
+            
+            <p>（5）讽刺是【语段三】这部小说最突出的艺术手法，请再写一个典型情节，并谈谈其讽刺效果。</p>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q14-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q14-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q14-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                <p>（1）<span class="answer-key-point-1">C</span></p>
+                <p>（2）<span class="answer-key-point-2">燕青</span>；<span class="answer-key-point-3">林冲</span></p>
+                <p>（3）<span class="answer-key-point-1">动作描写，神态描写，</span> <span class="answer-key-point-2">生动传神地表现了燕青动作敏捷，武艺高强，</span> <span class="answer-key-point-3">以及对卢俊义的感情深厚，忠心耿耿（重情重义）。</span></p>
+                <p>（4）<span class="answer-key-point-4">《儒林外史》</span>；<span class="answer-key-point-5">苦读了几十年的书，却连秀才也考不上，路过贡院，进去观看，触景生情，悲痛万分。</span></p>
+                <p>（5）<span class="answer-key-point-1">示例：汤知县请正在居丧的范进吃饭，范进先是不肯用银镶杯箸、瓷杯象箸，后来"他在燕窝碗里拣了一个大虾元子送在嘴里"。</span> <span class="answer-key-point-2">就是这样一个细节，戳穿了范进居丧守礼的假面，暴露了他的虚伪和做作。</span></p>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q14-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 解题思路
+            </div>
+            <div class="analysis-content">
+                <p><strong>第（1）小题解析：</strong></p>
+                <p>C选项错误。结合第二段"我做了生我的父母家里的新客了！"、第三段"但，我是这般忸怩不安！"可知，"我"回到父母家，感到忸怩不安，如同做客，虽然吃穿比在大堰河家里好，但是却并不感到温暖和幸福；实际上表达了"我"对亲生家庭的陌生感和对大堰河的深厚感情。</p>
+                
+                <p><strong>第（2）小题解析：</strong></p>
+                <p>本题考查《水浒传》的人物和情节：</p>
+                <ul>
+                    <li>救卢俊义的是燕青，绰号"浪子"</li>
+                    <li>董超、薛霸曾经押解林冲，在野猪林企图杀害林冲，被鲁智深所救</li>
+                </ul>
+                
+                <p><strong>第（3）小题解析：</strong></p>
+                <p>赏析人物描写角度：</p>
+                <p>句子中"托地从树上跳将下来""拔出解腕尖刀""割断绳索""劈碎盘头枷""抱住卢员外放声大哭"等一系列动词，清晰地描绘了人物的一系列连贯动作，属于典型的动作描写。通过这些动作描写，生动地展现了"那人"身手敏捷、武艺高强的特点。"抱住卢员外放声大哭"又体现了他对卢俊义的深厚情感和忠诚。</p>
+                
+                <p><strong>第（4）小题解析：</strong></p>
+                <p>本题考查《儒林外史》的基本信息：</p>
+                <ul>
+                    <li>作者：清代吴敬梓</li>
+                    <li>周进痛哭原因：多年科举不中，看到贡院触景生情</li>
+                </ul>
+                
+                <p><strong>第（5）小题解析：</strong></p>
+                <p>本题考查对《儒林外史》讽刺手法的理解，需要：</p>
+                <ol>
+                    <li>写出一个典型情节（如范进中举、严监生之死等）</li>
+                    <li>分析该情节的讽刺效果（讽刺了什么社会现象或人性弱点）</li>
+                </ol>
+                <p><strong>拓展示例：</strong>范进中举后喜极而疯，讽刺了科举制度对知识分子精神的摧残；胡屠户前倨后恭的态度变化，讽刺了世态炎凉、趋炎附势的社会风气。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 第15-19题 -->
+    <div class="question-card" id="q15-19">
+        <div class="question-header">
+            <div class="question-title">第15-19题：散文阅读《吃瓜》</div>
+            <div class="question-points">20分</div>
+        </div>
+        <div class="question-content">
+            <p>15.作者围绕吃瓜的经历抒发了不同的感怀，请参考示例，填写表格。</p>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>时期</th>
+                        <th>少年吃瓜</th>
+                        <th>青年吃瓜</th>
+                        <th>再吃蜜瓜</th>
+                        <th>而今吃瓜</th>
+                    </tr>
+                    <tr>
+                        <td>感怀</td>
+                        <td>闲适快乐、充满惊奇</td>
+                        <td>①</td>
+                        <td>②</td>
+                        <td>淡而无味、不再关心</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <p>16.文章第④段划线部分关于"我"吃"华莱士"，蜜瓜的情景极具镜头感，请你给这幅镜头命名并用文字描写出来，可从画面布局、人物行为、心理独白三个方面选择其中两个角度对这幅镜头展开描写。</p>
+            
+            <p>17.品读意境之美就像鉴赏一幅写意画，字里行间里往往透露出情思的流动，请结合语境，按要求赏析词句。</p>
+            <p>①此瓜远非彼瓜，今瓜已非昔瓜，这个瓜已完完全全地变异了。（分析语境中"瓜"字含义的变化）</p>
+            <p>②外面飞雪团团，屋内炉火熊熊，盘腿坐在滚烫的热炕上，吃完白水煮羊肉，浑身冒汗，甩掉老羊皮袄，小心捧过一个冬瓜，吸一口凉透肺腑，甜到心底，耳聪目明。（从描写的角度赏析句子）</p>
+            
+            <p>18.请结合上下文，谈谈你对第⑥段划线句子含义的理解。</p>
+            <p>原来人与瓜的初恋只能是在瓜地里。</p>
+            
+            <p>19.对于记忆中的美好事物，《社戏》中成年后的鲁迅说"我实在再没有吃到那夜似的好豆，一一也不再看到那夜似的好戏。"返京后的梁衡说："而今吃瓜高楼上，淡而无味也。"请结合《社戏》与文章内容分析两人产生相似感受的原因。</p>
+        </div>
+        <button class="answer-btn" onclick="toggleAnswer('q15-19-answer')">
+            <i class="fas fa-lightbulb"></i> 显示答案
+        </button>
+        <button class="answer-btn" onclick="toggleAnswer('q15-19-analysis')">
+            <i class="fas fa-brain"></i> 显示解析
+        </button>
+        
+        <div class="answer-container" id="q15-19-answer">
+            <div class="answer-title">
+                <i class="fas fa-check-circle"></i> 参考答案
+            </div>
+            <div class="answer-content">
+                <p>15. ①<span class="answer-key-point-1">聊慰乡情，甜到心底</span> ②<span class="answer-key-point-2">全无味道，百思不解</span></p>
+                <p>16. <span class="answer-key-point-1">命名示例：解忧"华莱士"</span><br>
+                   <span class="answer-key-point-2">镜头描写示例：屋外尘暴蔽日，白天烈日烤人（或：晚上夜凉如水）；</span> <span class="answer-key-point-3">屋内"华莱士"瓜外表金黄、瓜瓤白中带绿如翡翠，吃瓜人正在吃瓜，津津有味，如吃蜂蜜一般。</span></p>
+                <p>17. ①<span class="answer-key-point-1">第一个"瓜"指的是"看热闹的人"爱看的"热闹"，</span> <span class="answer-key-point-2">第二个"瓜"指的是地里生长的一种水果"真瓜"。</span><br>
+                   ②<span class="answer-key-point-3">运用动作描写（或：细节描写）的方法，</span> <span class="answer-key-point-4">通过"坐""吃""甩掉""捧过""吸"等一系列动词，</span> <span class="answer-key-point-5">生动细致地描写了在冬腊月吸食冬瓜的情景，表现了作者对往昔生活的留恋和怀念之情。</span></p>
+                <p>18. <span class="answer-key-point-1">示例：对瓜来说，离地一天，味减一半，人们最爱恋的味道最好的瓜应该是刚从地里摘下来的；</span> <span class="answer-key-point-2">对世间万物而言，世界瞬息万变，人生的许多美好只能有一次，过后唯有存在记忆里。</span></p>
+                <p>19. <span class="answer-key-point-1">示例：《社戏》叙述了"我"少年时一段看水乡社戏的往事，主要描写了"月夜行船""赵庄看戏""停船吃豆"等情节，表现了作者对童年美好生活的回忆和留恋的心情；</span> <span class="answer-key-point-2">本文主要记叙了作者三次吃瓜的不同经历和感受，抒发了作者对往昔生活的回忆和留恋之情。</span> <span class="answer-key-point-3">因此，鲁迅"我实在再没有吃到那夜似的好豆，一一也不再看到那夜似的好戏"、梁衡"而今吃瓜高楼上，淡而无味也"两人产生相似感受的原因是：往昔的生活快乐新奇，是最美好的回忆；</span> <span class="answer-key-point-4">两人都对童年的生活充满了回忆和留恋之情。</span></p>
+            </div>
+        </div>
+        
+        <div class="analysis-container" id="q15-19-analysis">
+            <div class="analysis-title">
+                <i class="fas fa-search"></i> 散文阅读解题思路
+            </div>
+            <div class="analysis-content">
+                <p><strong>第15题解析：</strong></p>
+                <p>本题考查信息筛选和概括能力：</p>
+                <ul>
+                    <li>①青年吃瓜：结合第④段"我一个人背井离乡来到这个沙窝子里，举目无亲，聊以慰藉者、给亲友去信时用来报喜而不报忧者，唯有这'华莱士'瓜。"可概括为"聊慰乡情"；结合"吸一口凉透肺腑，甜到心底"可概括为"甜到心底"</li>
+                    <li>②再吃蜜瓜：结合第⑤段"离开巴盟40年后我回去过一次，又吃了一回'华莱士'，但已全无味道。"和"常百思不得其解"可概括为"全无味道，百思不解"</li>
+                </ul>
+                
+                <p><strong>第16题解析：</strong></p>
+                <p>本题考查画面描写和想象能力：</p>
+                <ol>
+                    <li>命名要简洁，能概括画面核心内容</li>
+                    <li>镜头描写要从指定角度展开：
+                        <ul>
+                            <li>画面布局：环境描写，注意远近、内外结合</li>
+                            <li>人物行为：吃瓜的具体动作和状态</li>
+                            <li>心理独白：人物的内心感受和想法</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <p><strong>第17题解析：</strong></p>
+                <p>①分析词语含义变化：要结合上下文理解"瓜"在不同语境中的不同含义。第一个"瓜"指网络流行语中的"吃瓜"（看热闹），第二个"瓜"指真正的瓜（水果）。</p>
+                <p>②赏析句子：从描写角度入手，找出句子中的动词，分析这些动作描写的作用，最后点明表达的情感。</p>
+                
+                <p><strong>第18题解析：</strong></p>
+                <p>本题考查句子含义理解：</p>
+                <p>这句话运用了比喻的修辞手法，将人与瓜的关系比作"初恋"，需要从表层和深层两个角度理解：</p>
+                <ul>
+                    <li>表层：瓜刚从地里摘下来时味道最好</li>
+                    <li>深层：人生中许多美好的事物和体验只有一次，失去后就只能存在于记忆中</li>
+                </ul>
+                
+                <p><strong>第19题解析：</strong></p>
+                <p>本题考查对比阅读和主题探究：</p>
+                <p>需要联系《社戏》和本文的共同主题：</p>
+                <ol>
+                    <li>找出两篇文章的相似之处：都对童年/往昔美好生活充满怀念</li>
+                    <li>分析产生相似感受的原因：美好事物一去不复返，只能存在于记忆中</li>
+                    <li>总结：表达了对纯真童年/往昔生活的深切怀念</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 九年级语文备课组 | 仅供教学使用</p>
+        <p><i class="fas fa-lightbulb"></i> 温馨提示：做完题目后要认真核对答案，分析错误原因，及时查漏补缺。</p>
+    </div>
+
+    <script>
+        // 控制答案和解析的显示/隐藏
+        function toggleAnswer(elementId) {
+            const element = document.getElementById(elementId);
+            if (element.style.display === 'block') {
+                element.style.display = 'none';
+            } else {
+                element.style.display = 'block';
+                // 平滑滚动到元素位置
+                element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+        
+        // 页面加载后添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为所有题目卡片添加点击效果
+            const cards = document.querySelectorAll('.question-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // 如果点击的不是按钮，则添加一个短暂的点击效果
+                    if (!e.target.closest('.answer-btn')) {
+                        this.style.transform = 'scale(0.99)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 200);
+                    }
+                });
+            });
+            
+            // 为所有选项添加点击效果
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    // 移除其他选项的active状态
+                    options.forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    // 添加当前选项的active状态
+                    this.classList.add('active');
+                });
+            });
+            
+            console.log('试卷讲评课件加载完成！祝同学们学习进步！');
+        });
+    </script>
+</body>
+</html>
